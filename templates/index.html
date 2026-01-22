@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titanic Survival Prediction</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 20px; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #333; }
+        form { display: grid; gap: 15px; }
+        label { font-weight: bold; }
+        input, select { padding: 10px; border: 1px solid #ccc; border-radius: 5px; width: 100%; }
+        button { background: #007BFF; color: white; padding: 12px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #0056b3; }
+        .result { margin-top: 30px; padding: 15px; background: #e9ecef; border-radius: 5px; text-align: center; font-size: 1.2em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Titanic Survival Prediction</h1>
+        <form method="POST">
+            <label>Pclass (1 = 1st, 2 = 2nd, 3 = 3rd):</label>
+            <select name="pclass" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+
+            <label>Sex:</label>
+            <select name="sex" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+
+            <label>Age:</label>
+            <input type="number" name="age" step="0.1" min="0" required>
+
+            <label>Fare:</label>
+            <input type="number" name="fare" step="0.01" min="0" required>
+
+            <label>Embarked:</label>
+            <select name="embarked" required>
+                <option value="C">Cherbourg (C)</option>
+                <option value="Q">Queenstown (Q)</option>
+                <option value="S">Southampton (S)</option>
+            </select>
+
+            <button type="submit">Predict Survival</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            Prediction: <strong>{{ prediction }}</strong>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
